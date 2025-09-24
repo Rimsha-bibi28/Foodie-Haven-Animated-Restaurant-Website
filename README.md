@@ -36,18 +36,6 @@ Copy code
 
 ---
 
-## 🎨 Screenshots
-
-### 🌐 Hero Section
-
-![Hero Section](images/demo-hero.png)
-
-### 🖼️ Gallery Section
-
-![Gallery](images/demo-gallery.png)
-
----
-
 ## 📱 Responsive Preview
 
 - ✅ Desktop
@@ -68,3 +56,4 @@ Submit a PR
 💼 Created by RIMSHA BIBI
 
 If you like this project, don’t forget to ⭐ the repo!
+
