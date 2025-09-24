@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>🍴 Foodie Haven</title>
+    <style>
+      /* General Reset */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        font-family: Arial, sans-serif;
+        background: #f9f5ff;
+        color: #333;
+        padding-top: 70px; /* space for fixed navbar */
+      }
+
+      /* Navbar */
+      .navbar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        background: linear-gradient(90deg, #6a1b9a, #8e24aa, #ab47bc);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 12px 24px;
+        color: #fff;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+        z-index: 1000;
+        animation: slideDown 1s ease;
+      }
+
+      .navbar .logo {
+        font-size: 1.5rem;
+        font-weight: bold;
+        letter-spacing: 1px;
+      }
+
+      .navbar .nav-links a {
+        margin: 0 12px;
+        text-decoration: none;
+        color: #f8e9ff;
+        font-weight: 500;
+        transition: color 0.3s ease;
+      }
+      .navbar .nav-links a:hover {
+        color: #ffd54f;
+      }
+
+      /* Navbar doodles */
+      .nav-doodles {
+        display: flex;
+        gap: 8px;
+        font-size: 1.4rem;
+      }
+      .nav-doodles .doodle {
+        animation: floaty 3s infinite ease-in-out;
+      }
+      .nav-doodles .🍕 {
+        color: #ff7043;
+      }
+      .nav-doodles .🍔 {
+        color: #fbc02d;
+      }
+      .nav-doodles .🥗 {
+        color: #66bb6a;
+      }
+      .nav-doodles .🍹 {
+        color: #29b6f6;
+      }
+
+      @keyframes floaty {
+        0%,
+        100% {
+          transform: translateY(0);
+        }
+        50% {
+          transform: translateY(-6px);
+        }
+      }
+
+      @keyframes slideDown {
+        from {
+          transform: translateY(-100%);
+        }
+        to {
+          transform: translateY(0);
+        }
+      }
+
+      /* Hero Section */
+      header {
+        position: relative;
+        height: 60vh;
+        background: url("header-food.jpeg") no-repeat center center/cover;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        color: #fff;
+        animation: fadeIn 2s ease;
+      }
+
+      header::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(106, 27, 154, 0.5);
+      }
+
+      .hero-text {
+        position: relative;
+        z-index: 1;
+        animation: zoomIn 1.5s ease;
+      }
+
+      .hero-text h1 {
+        font-size: 2.5rem;
+        margin-bottom: 10px;
+        color: #fff;
+        text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.6);
+      }
+
+      .hero-text p {
+        font-size: 1.2rem;
+        color: #f3e5f5;
+      }
+
+      /* Menu Section */
+      section {
+        padding: 40px 20px;
+        animation: fadeUp 1.5s ease;
+      }
+      section h2 {
+        text-align: center;
+        margin-bottom: 20px;
+        color: #6a1b9a;
+      }
+      .menu-item {
+        border: 3px dashed #8e24aa;
+        padding: 15px;
+        margin: 10px 0;
+        background: #f3e5f5;
+        transition: transform 0.3s, box-shadow 0.3s;
+      }
+      .menu-item:hover {
+        transform: scale(1.05);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+      }
+
+      /* Gallery with Filters */
+      .gallery {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+        justify-content: center;
+        animation: fadeUp 2s ease;
+      }
+      .gallery img {
+        width: 200px;
+        border: 4px solid #6a1b9a;
+        border-radius: 8px;
+        transition: transform 0.4s ease, filter 0.4s ease;
+      }
+      .gallery img:hover {
+        transform: rotate(3deg) scale(1.1);
+        filter: brightness(110%);
+      }
+      .invert {
+        filter: invert(1);
+      }
+      .contrast {
+        filter: contrast(150%);
+      }
+      .grayscale {
+        filter: grayscale(100%);
+      }
+      .blur {
+        filter: blur(2px);
+      }
+      .opacity {
+        filter: opacity(0.6);
+      }
+      .saturate {
+        filter: saturate(200%);
+      }
+
+      /* Reviews */
+      .reviews {
+        height: 120px;
+        overflow-y: scroll;
+        border: 3px dotted #ab47bc;
+        padding: 10px;
+        background: #f3e5f5;
+        animation: fadeIn 2s ease;
+      }
+
+      /* Specials */
+      .specials {
+        overflow-x: scroll;
+        white-space: nowrap;
+        border: 3px solid #8e24aa;
+        padding: 15px;
+        margin-top: 20px;
+        animation: slideIn 2s ease;
+      }
+      .specials span {
+        display: inline-block;
+        margin-right: 20px;
+        background: #d1c4e9;
+        padding: 10px;
+        border-radius: 6px;
+        transition: transform 0.3s ease, background 0.3s ease;
+      }
+      .specials span:hover {
+        transform: scale(1.1);
+        background: #ab47bc;
+        color: #fff;
+      }
+
+      /* Keyframes for animations */
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+      @keyframes zoomIn {
+        from {
+          transform: scale(0.8);
+          opacity: 0;
+        }
+        to {
+          transform: scale(1);
+          opacity: 1;
+        }
+      }
+      @keyframes fadeUp {
+        from {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      @keyframes slideIn {
+        from {
+          opacity: 0;
+          transform: translateX(-50px);
+        }
+        to {
+          opacity: 1;
+          transform: translateX(0);
+        }
+      }
+
+      /* Responsive */
+      @media (max-width: 768px) {
+        .gallery img {
+          width: 45%;
+        }
+        .navbar .nav-links {
+          display: none;
+        }
+      }
+      @media (max-width: 480px) {
+        .gallery img {
+          width: 100%;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Navbar -->
+    <nav class="navbar">
+      <div class="logo">🍴 Foodie Haven</div>
+      <div class="nav-links">
+        <a href="#menu">Menu</a>
+        <a href="#gallery">Gallery</a>
+        <a href="#reviews">Reviews</a>
+        <a href="#specials">Specials</a>
+      </div>
+      <div class="nav-doodles">
+        <span class="doodle 🍕">🍕</span>
+        <span class="doodle 🍔">🍔</span>
+        <span class="doodle 🥗">🥗</span>
+        <span class="doodle 🍹">🍹</span>
+      </div>
+    </nav>
+
+    <!-- Hero -->
+    <header>
+      <div class="hero-text">
+        <h1>Welcome to Foodie Haven</h1>
+        <p>Your favorite place for delicious food & drinks!</p>
+      </div>
+    </header>
+
+    <!-- Menu -->
+    <section id="menu">
+      <h2>Our Menu</h2>
+      <div class="menu-item">🍕 Pizza Margherita</div>
+      <div class="menu-item">🍔 Classic Burger</div>
+      <div class="menu-item">🥗 Caesar Salad</div>
+    </section>
+
+    <!-- Gallery -->
+    <section id="gallery">
+      <h2>Food Gallery (Filter Demo)</h2>
+      <div class="gallery">
+        <img src="burger.jpeg" alt="Food" class="invert" />
+        <img src="casual.jpeg" alt="Food" class="contrast" />
+        <img src="yum.jpeg" alt="Food" class="grayscale" />
+        <img src="ok.jpeg" alt="Food" class="blur" />
+        <img src="sta.jpeg" alt="Food" class="opacity" />
+        <img src="wing.jpeg" alt="Food" class="saturate" />
+      </div>
+    </section>
+
+    <!-- Reviews -->
+    <section id="reviews">
+      <h2>Customer Reviews</h2>
+      <div class="reviews">
+        <p>This is a long customer feedback but part of it is hidden...</p>
+        <p>Great food, cozy atmosphere, and quick service!</p>
+        <p>The pizza was outstanding. Will order again!</p>
+        <p>Love the desserts, especially the cheesecake!</p>
+        <p>The staff was super friendly and attentive.</p>
+        <p>Amazing ambiance and tasty food.</p>
+      </div>
+    </section>
+
+    <!-- Specials -->
+    <section id="specials">
+      <h2>Chef Specials (Horizontal Scroll)</h2>
+      <div class="specials">
+        <span>🍣 Sushi Rolls</span>
+        <span>🥘 Paella</span>
+        <span>🥩 Steak</span>
+        <span>🍝 Pasta</span>
+        <span>🍤 Shrimp Platter</span>
+        <span>🍪 Cookies</span>
+        <span>🍰 Cake</span>
+      </div>
+    </section>
+  </body>
+</html>
